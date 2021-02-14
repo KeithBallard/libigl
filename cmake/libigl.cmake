@@ -104,10 +104,15 @@ endif()
 if(HUNTER_ENABLED)
   hunter_add_package(Eigen)
   find_package(Eigen3 CONFIG REQUIRED)
+elseif(Eigen3_DIR)
+  message(STATUS "Looking for Eigen in: ${Eigen3_DIR}")
+  find_package(Eigen3 CONFIG HINTS ${Eigen3_DIR})
+  message(STATUS "Found Eigen in given directory: ${Eigen3_FOUND}")
 endif()
 
 # Eigen
 if(NOT TARGET Eigen3::Eigen)
+  message(STATUS "Eigen was not found and will be downloaded.")
   igl_download_eigen()
   add_library(igl_eigen INTERFACE)
   target_include_directories(igl_eigen SYSTEM INTERFACE
