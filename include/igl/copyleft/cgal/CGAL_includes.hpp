@@ -13,6 +13,7 @@
 //#define CGAL_INTERSECTION_VERSION 1
 // Use this instead to mute errors resulting from bad CGAL assertions
 #define CGAL_KERNEL_NO_ASSERTIONS
+#include <boost/next_prior.hpp>
 // Triangle triangle intersection
 #include <CGAL/intersections.h>
 // THIS CANNOT BE INCLUDED IN THE SAME FILE AS <CGAL/intersections.h>
